@@ -1,12 +1,16 @@
 {% extends 'base.html' %}
 {% block title %}My App - Posts{% endblock %}
 {% block content %}
+{% if message %}
+	<div class="alert alert-success">{{ message }}</div>
+{% endif %}
 	<table>
 		<tr>
 			<th>Title</th>
 			<th>Content</th>
 			<th>Likes</th>
 			<th>Dislikes</th>
+			<th>Delete</th>
 		</tr>
 		{% for post in posts %}
 		<tr>
@@ -14,6 +18,7 @@
 			<td>{{ post.content }}</td>
 			<td>{{ post.likes }}</td>
 			<td>{{ post.dislikes }}</td>
+			<td><a href="/post/delete/{{ post.id }}/" class="btn btn-sm btn-danger">Delete</a></td>
 		</tr>
 		{% endfor %}
 	</table>

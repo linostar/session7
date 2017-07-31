@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from django.db import models
 
 
@@ -16,7 +18,7 @@ class Post(models.Model):
 	likes = models.IntegerField(default=0)
 	dislikes = models.IntegerField(null=True, blank=True)
 	visible = models.BooleanField(default=True)
-	creationdate = models.DateTimeField()
+	creationdate = models.DateTimeField(default=datetime.now)
 	author = models.ForeignKey(Author, null=True, blank=True)
 
 

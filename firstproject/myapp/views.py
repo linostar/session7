@@ -27,18 +27,41 @@ def posts(request):
 		})
 
 def post_edit(request, post_id):
+	if int(post_id):
+		post = get_object_or_404(Post, id=int(post_id))
+	else:
+		post = None
 	message = ""
-	post = get_object_or_404(Post, id=int(post_id))
+
 	if request.method == "POST":
-		post.title = request.POST["title"]
-		post.content = request.POST["content"]
-		post.likes = int(request.POST["likes"])
-		post.dislikes = int(request.POST["dislikes"])
-		message = "Save success"
-		post.save()
+		if int(post_id) == 0:
+			# create new post
+			post = Post(title=request.POST["title"], 
+				content=request.POST["content"], 
+				likes=int(request.POST["likes"]), 
+				dislikes=int(request.POST["dislikes"]))
+			message = "Create success"
+			post.save()
+		else:
+			# update existing post
+			post = get_object_or_404(Post, id=int(post_id))
+			post.title = request.POST["title"]
+			post.content = request.POST["content"]
+			post.likes = int(request.POST["likes"])
+			post.dislikes = int(request.POST["dislikes"])
+			message = "Update success"
+			post.save()
 
 	
 	return render(request, "post_edit.html", {
 		"post": post,
 		"message": message,
+		})
+
+def post_delete(request, post_id):
+	post = get_object_or_404(Post, id=int(post_id))
+	post.delete()
+	return render(request, "posts.html", {
+		"posts": Post.objects.all(),
+		"message": "Post deleted"
 		})
