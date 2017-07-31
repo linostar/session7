@@ -61,7 +61,4 @@ def post_edit(request, post_id):
 def post_delete(request, post_id):
 	post = get_object_or_404(Post, id=int(post_id))
 	post.delete()
-	return render(request, "posts.html", {
-		"posts": Post.objects.all(),
-		"message": "Post deleted"
-		})
+	return redirect("posts")
