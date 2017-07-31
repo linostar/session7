@@ -1,9 +1,6 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>My App - Posts</title>
-</head>
-<body>
+{% extends 'base.html' %}
+{% block title %}My App - Posts{% endblock %}
+{% block content %}
 	<table>
 		<tr>
 			<th>Title</th>
@@ -22,3 +19,4 @@
 	</table>
 </body>
 </html>
+{% endblock %}

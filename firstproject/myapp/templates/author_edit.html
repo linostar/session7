@@ -1,9 +1,6 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>My App - Author</title>
-</head>
-<body>
+{% extends 'base.html' %}
+	{% block title %}My App - Author Edit{% endblock %}
+	{% block content %}
 	<form action="" method="POST">
 	{% csrf_token %}
 		<div class="form-group">
@@ -23,5 +20,5 @@
 			<a href="/posts/" class="btn btn-default">Back</a>
 		</div>
 	</form>
-</body>
-</html>
+{% endblock %}
+
