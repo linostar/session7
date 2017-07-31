@@ -4,6 +4,9 @@
 	<title>My App - Post</title>
 </head>
 <body>
+	{% if message %}
+	<div class="alert alert-info">{{ message }}</div>
+	{% endif %}
 	<form action="" method="POST">
 	{% csrf_token %}
 		<div class="form-group">

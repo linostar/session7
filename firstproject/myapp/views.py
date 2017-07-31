@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 
 from myapp.models import *
 
@@ -27,7 +27,18 @@ def posts(request):
 		})
 
 def post_edit(request, post_id):
-	post = Post.objects.get(id=int(post_id))
+	message = ""
+	post = get_object_or_404(Post, id=int(post_id))
+	if request.method == "POST":
+		post.title = request.POST["title"]
+		post.content = request.POST["content"]
+		post.likes = int(request.POST["likes"])
+		post.dislikes = int(request.POST["dislikes"])
+		message = "Save success"
+		post.save()
+
+	
 	return render(request, "post_edit.html", {
-		"post": post
+		"post": post,
+		"message": message,
 		})
