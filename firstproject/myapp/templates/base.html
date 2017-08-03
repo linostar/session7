@@ -8,6 +8,12 @@
 	<title>{% block title %}{% endblock %}</title>
 </head>
 <body>
+	{% if request.session.username %}
+	<h4>Welcome, {{ request.session.username }}. <a href="/logout/">Logout</a></h4>
+	{% endif %}
+	{% if request.session.temperature != None %}
+	<h3>Temperature is: {{ request.session.temperature }}</h3>
+	{% endif %}
 	{% block content %}{% endblock %}
 	<script src="{% static 'js/jquery-2.1.4.min.js' %}"></script>
 	<script src="{% static 'js/bootstrap.min.js' %}"></script>

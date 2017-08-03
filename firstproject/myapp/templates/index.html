@@ -4,4 +4,17 @@
 	<a href="/posts/">Posts</a> - <a href="/post/0/">Add new</a>
 	<br/>
 	<a href="/authors/">Authors</a> - <a href="/author/0/">Add new</a>
+	<br>
+	<br>
+	<div class="row">
+		<div class="col-sm-4 col-sm-offset-4">
+			<form action="" method="POST">
+				{% csrf_token %}
+				<label for="temperature" class="control-label">Enter Temperature:</label>
+				<input type="number" name="temperature" id="temperature" value="30" class="form-control">
+				<button type="submit" class="btn btn-success">Save Temperature</button>
+				<a href="/delete_temperature/" class="btn btn-danger">Delete Temperature</a>
+			</form>
+		</div>
+	</div>
 {% endblock %}
