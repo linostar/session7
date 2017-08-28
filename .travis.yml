@@ -3,4 +3,4 @@ python:
   - "3.5"
   - "3.6"
 install: pip install django
-script: /usr/bin/env python3 firstporject/manage.py test
+script: /usr/bin/env python3 firstproject/manage.py test
