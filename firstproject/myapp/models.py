@@ -23,6 +23,15 @@ class Post(models.Model):
 	creationdate = models.DateTimeField(default=datetime.now, db_index=True)
 	author = models.ForeignKey(Author, null=True, blank=True, db_index=True)
 
+	def __str__(self):
+		return self.title
+
+	def like_percentage(self):
+		try:
+			return round((self.likes*100)/(self.likes+self.dislikes), 2)
+		except ZeroDivisionError:
+			return 0
+
 
 
 
