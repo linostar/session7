@@ -2,5 +2,5 @@ language: python
 python:
   - "3.5"
   - "3.6"
-install: pip install django
+install: pip install django==1.11
 script: /usr/bin/env python3 firstproject/manage.py test
